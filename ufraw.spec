@@ -1,10 +1,10 @@
 %define	name		ufraw
 %define	version		0.11
-%define	release		%mkrel 1
+%define	release		%mkrel 2
 
-Name:		%name
-Version:	%version
-Release:	%release
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/

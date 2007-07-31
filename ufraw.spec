@@ -1,6 +1,9 @@
 %define	name		ufraw
-%define	version		0.11
-%define	release		%mkrel 2
+%define	version		0.12
+%define	release		%mkrel 1
+
+%define build_cinepaint 0
+%{?_with_cinepaint: %global build_cinepaint 1}
 
 Name:		%{name}
 Version:	%{version}
@@ -8,14 +11,15 @@ Release:	%{release}
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
-Source0:	http://heanet.dl.sourceforge.net/sourceforge/ufraw/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/sourceforge/ufraw/%{name}-%{version}.tar.gz
 License:	GPL
 BuildRequires:	libgimp-devel >= 2.0 gtk+2-devel libjpeg-devel
 BuildRequires:	libtiff-devel zlib-devel liblcms-devel ImageMagick
-# we use libexiv instead of libexif
-#BuildRequires:	libexif-devel
-BuildRequires:	libexiv-devel
+BuildRequires:	libexiv-devel bzip2-devel
 BuildRequires:  desktop-file-utils
+%if %build_cinepaint
+BuildRequires: cinepaint-devel
+%endif
 Buildroot:	%_tmppath/%name-%version-%release-root
 
 %description
@@ -54,13 +58,26 @@ In contrary to the original GIMP plug-in of dcraw this one is much
 more comfortable, especially because of the life preview image but
 also due to more options.
 
+%if %build_cinepaint
+%package cinepaint
+Summary: 	Reads the raw image formats of digital cameras into Cinepaint
+Group: 		Graphics
+Requires: 	cinepaint
+ 
+%description cinepaint
+
+A Cinepaint plug-in which reads and processes raw images from most digital
+cameras. The conversion is done by the dcraw software and so all
+cameras supported by dcraw are also supported by this plug-in.
+%endif
+
 %prep
 rm -rf $RPM_BUILD_DIR/%{name}-%{version}
 
 %setup -q 
 
 %build
-%configure2_5x --with-exiv2  --enable-mime
+%configure2_5x --enable-mime
 %make
 
 %install
@@ -68,9 +85,6 @@ rm -rf $RPM_BUILD_DIR/%{name}-%{version}
 rm -fr %buildroot
 
 %makeinstall_std schemasdir=%{_sysconfdir}/gconf/schemas
-
-#don't package mime file, shared-mime-info is ok now
-rm -rf $RPM_BUILD_ROOT%{_datadir}/mime
 
 %find_lang ufraw
 
@@ -135,4 +149,8 @@ rm -fr %buildroot
 %defattr(-,root,root)
 %{_libdir}/gimp/2.0/plug-ins/*
 
-
+%if %build_cinepaint
+%files cinepaint
+%defattr(-,root,root)
+%{_libdir}/gimp/2.0/plug-ins/*
+%endif

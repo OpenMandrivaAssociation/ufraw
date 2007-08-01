@@ -1,9 +1,13 @@
 %define	name		ufraw
 %define	version		0.12
-%define	release		%mkrel 1
+%define	release		%mkrel 2
 
 %define build_cinepaint 0
 %{?_with_cinepaint: %global build_cinepaint 1}
+
+%if build_cinepaint
+%define cinepaint_dir %(pkg-config --variable=programplugindir cinepaint-gtk)
+%endif
 
 Name:		%{name}
 Version:	%{version}
@@ -19,6 +23,9 @@ BuildRequires:	libexiv-devel bzip2-devel
 BuildRequires:  desktop-file-utils
 %if %build_cinepaint
 BuildRequires: cinepaint-devel
+%endif
+%if %mdkver >= 200800
+BuildRequires: gtkimageview-devel
 %endif
 Buildroot:	%_tmppath/%name-%version-%release-root
 
@@ -78,6 +85,7 @@ rm -rf $RPM_BUILD_DIR/%{name}-%{version}
 
 %build
 %configure2_5x --enable-mime
+
 %make
 
 %install
@@ -152,5 +160,5 @@ rm -fr %buildroot
 %if %build_cinepaint
 %files cinepaint
 %defattr(-,root,root)
-%{_libdir}/gimp/2.0/plug-ins/*
+%{cinepaint_dir}/plug-ins/*
 %endif

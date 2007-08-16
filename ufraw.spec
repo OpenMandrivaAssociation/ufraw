@@ -18,7 +18,7 @@ URL:		http://ufraw.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/sourceforge/ufraw/%{name}-%{version}.tar.gz
 License:	GPL
 BuildRequires:	libgimp-devel >= 2.0 gtk+2-devel libjpeg-devel
-BuildRequires:	libtiff-devel zlib-devel liblcms-devel ImageMagick
+BuildRequires:	libtiff-devel zlib-devel lcms-devel ImageMagick
 BuildRequires:	libexiv-devel bzip2-devel
 BuildRequires:  desktop-file-utils
 %if %build_cinepaint

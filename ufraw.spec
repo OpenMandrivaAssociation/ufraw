@@ -1,6 +1,6 @@
 %define	name		ufraw
 %define	version		0.12.1
-%define	release		%mkrel 1
+%define	release		%mkrel 2
 
 %define build_cinepaint 0
 %{?_with_cinepaint: %global build_cinepaint 1}
@@ -108,6 +108,9 @@ longtitle="Graphical tool to convert RAW images from digital cameras" \
 xdg=true \
 needs="x11"
 EOF
+
+sed -i -e 's/^\(Icon=.*\).png$/\1/g' $RPM_BUILD_ROOT%{_datadir}/applications/ufraw.desktop 
+
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \

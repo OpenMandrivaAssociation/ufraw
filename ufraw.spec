@@ -27,7 +27,6 @@ BuildRequires: cinepaint-devel
 %if %mdkver >= 200800
 BuildRequires: gtkimageview-devel
 %endif
-Buildroot:	%_tmppath/%name-%version-%release-root
 
 %description
 

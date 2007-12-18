@@ -96,16 +96,15 @@ rm -fr %buildroot
 %find_lang ufraw
 
 # Install menu stuff
-install -d %{buildroot}%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} <<EOF
-?package(%{name}): \
-command="%{name}" \
-icon="%{name}.png" \
-section="Multimedia/Graphics" \
-title="UFRaw" \
-longtitle="Graphical tool to convert RAW images from digital cameras" \
-xdg=true \
-needs="x11"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=%{name}
+Icon=%{name}
+Categories=Graphics;Viewer;
+Name=UFRaw
+Comment=Graphical tool to convert RAW images from digital camerasxdg=true
 EOF
 
 sed -i -e 's/^\(Icon=.*\).png$/\1/g' $RPM_BUILD_ROOT%{_datadir}/applications/ufraw.desktop 
@@ -147,7 +146,7 @@ rm -fr %buildroot
 %doc README
 %_sysconfdir/gconf/schemas/ufraw.schemas
 %_bindir/*
-%_menudir/*
+%{_datadir}/applications/mandriva-*.desktop
 %_datadir/applications/ufraw.desktop
 %_datadir/pixmaps/*.png
 %_iconsdir/*.png

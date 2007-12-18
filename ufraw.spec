@@ -104,7 +104,7 @@ Exec=%{name}
 Icon=%{name}
 Categories=Graphics;Viewer;
 Name=UFRaw
-Comment=Graphical tool to convert RAW images from digital camerasxdg=true
+Comment=Graphical tool to convert RAW images from digital cameras
 EOF
 
 sed -i -e 's/^\(Icon=.*\).png$/\1/g' $RPM_BUILD_ROOT%{_datadir}/applications/ufraw.desktop 

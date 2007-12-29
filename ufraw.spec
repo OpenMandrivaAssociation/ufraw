@@ -1,6 +1,6 @@
 %define	name		ufraw
 %define	version		0.13
-%define	release		%mkrel 2
+%define	release		%mkrel 3
 
 %define build_cinepaint 0
 %{?_with_cinepaint: %global build_cinepaint 1}
@@ -16,6 +16,8 @@ Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/sourceforge/ufraw/%{name}-%{version}.tar.gz
+# (fc) 0.13-3mdv cvs fixes (fix integer overflow in Canon exposure, additional WB settings, fix incandescent 400D WB, fix window resizing)
+Patch0:		ufraw-0.13-cvsfixes.patch
 License:	GPL
 BuildRequires:	libgimp-devel >= 2.0 gtk+2-devel libjpeg-devel
 BuildRequires:	libtiff-devel zlib-devel lcms-devel ImageMagick
@@ -80,7 +82,8 @@ cameras supported by dcraw are also supported by this plug-in.
 %prep
 rm -rf $RPM_BUILD_DIR/%{name}-%{version}
 
-%setup -q 
+%setup -q
+%patch0 -p1 -b .cvsfixes
 
 %build
 %configure2_5x --enable-mime

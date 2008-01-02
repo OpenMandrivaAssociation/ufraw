@@ -29,6 +29,7 @@ BuildRequires: cinepaint-devel
 %if %mdkver >= 200800
 BuildRequires: gtkimageview-devel
 %endif
+Buildroot:	%_tmppath/%name-%version-%release-root
 
 %description
 UFRaw is a utility to read and manipulate raw images from digital cameras.

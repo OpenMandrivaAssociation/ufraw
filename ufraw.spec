@@ -31,16 +31,11 @@ BuildRequires: gtkimageview-devel
 %endif
 
 %description
-
 UFRaw is a utility to read and manipulate raw images from digital cameras.
 It can be used by itself or as a Gimp plug-in.
 It reads raw images using Dave Coffin's raw conversion utility DCRaw.
 And it supports basic color management using Little CMS, allowing
 the user to apply color profiles.
-
-Ufraw was originally based on the gimp plug-in by Dave Coffin
-http://www.cybercom.net/~dcoffin/
-and on Pawel T. Jochym's (jochym at ifj edu pl) plug-in.
 
 Raw images are the data directly read from the CCD of the camera,
 without in-camera processing, without lossy JPEG compression, and in

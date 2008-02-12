@@ -53,7 +53,6 @@ Requires: 	gimp
 Conflicts:	dcraw-gimp2.0 rawphoto
  
 %description gimp
-
 A GIMP plug-in which reads and processes raw images from most digital
 cameras. The conversion is done by the dcraw software and so all
 cameras supported by dcraw are also supported by this plug-in.
@@ -69,7 +68,6 @@ Group: 		Graphics
 Requires: 	cinepaint
  
 %description cinepaint
-
 A Cinepaint plug-in which reads and processes raw images from most digital
 cameras. The conversion is done by the dcraw software and so all
 cameras supported by dcraw are also supported by this plug-in.

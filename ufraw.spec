@@ -125,17 +125,21 @@ rm -fr %buildroot
 %define schemas ufraw
 
 # Update menus
+%if %mdkversion < 200900
 %post
 %post_install_gconf_schemas %schemas
 %update_desktop_database
 %update_menus
+%endif
 
 %preun
 %preun_uninstall_gconf_schemas %schemas
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
 %clean_desktop_database
+%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)

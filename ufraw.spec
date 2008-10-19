@@ -1,5 +1,5 @@
 %define	name		ufraw
-%define	version		0.14
+%define	version		0.14.1
 %define	release		%mkrel 1
 
 %define build_cinepaint 0

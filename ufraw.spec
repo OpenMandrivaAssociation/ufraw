@@ -19,7 +19,7 @@ Source0:	http://downloads.sourceforge.net/sourceforge/ufraw/%{name}-%{version}.t
 Patch1:		ufraw-0.14-desktop-file-fix.patch
 License:	GPLv2+
 BuildRequires:	libgimp-devel >= 2.0 gtk+2-devel libjpeg-devel
-BuildRequires:	libtiff-devel zlib-devel lcms-devel ImageMagick
+BuildRequires:	libtiff-devel zlib-devel lcms-devel imagemagick
 BuildRequires:	libexiv-devel bzip2-devel cfitsio-devel
 %if %build_cinepaint
 BuildRequires: cinepaint-devel

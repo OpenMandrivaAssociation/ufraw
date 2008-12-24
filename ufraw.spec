@@ -1,5 +1,5 @@
 %define	name		ufraw
-%define	version		0.14.1
+%define	version		0.15
 %define	release		%mkrel 1
 
 %define build_cinepaint 0
@@ -21,6 +21,7 @@ License:	GPLv2+
 BuildRequires:	libgimp-devel >= 2.0 gtk+2-devel libjpeg-devel
 BuildRequires:	libtiff-devel zlib-devel lcms-devel imagemagick
 BuildRequires:	libexiv-devel bzip2-devel cfitsio-devel
+BuildRequires:	libgomp-devel
 %if %build_cinepaint
 BuildRequires: cinepaint-devel
 %endif

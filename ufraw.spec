@@ -1,6 +1,6 @@
 %define	name		ufraw
 %define	version		0.16
-%define	release		%mkrel 2
+%define	release		%mkrel 3
 
 %define build_cinepaint 0
 %{?_with_cinepaint: %global build_cinepaint 1}

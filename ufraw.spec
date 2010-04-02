@@ -1,6 +1,6 @@
 %define	name		ufraw
-%define	version		0.16
-%define	release		%mkrel 3
+%define	version		0.17
+%define	release		%mkrel 1
 
 %define build_cinepaint 0
 %{?_with_cinepaint: %global build_cinepaint 1}
@@ -15,13 +15,12 @@ Release:	%{release}
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/sourceforge/ufraw/%{name}-%{version}-1.tar.gz
-Patch1:		ufraw-0.14-desktop-file-fix.patch
+Source0:	http://downloads.sourceforge.net/sourceforge/ufraw/%{name}-%{version}.tar.gz
 License:	GPLv2+
 BuildRequires:	libgimp-devel >= 2.0 gtk+2-devel libjpeg-devel
 BuildRequires:	libtiff-devel zlib-devel lcms-devel imagemagick
 BuildRequires:	libexiv-devel bzip2-devel cfitsio-devel
-BuildRequires:	libgomp-devel
+BuildRequires:	libgomp-devel lensfun-devel
 %if %build_cinepaint
 BuildRequires: cinepaint-devel
 %endif
@@ -74,7 +73,6 @@ cameras supported by dcraw are also supported by this plug-in.
 
 %prep
 %setup -q
-%patch1 -p0
 
 %build
 %configure2_5x --enable-mime

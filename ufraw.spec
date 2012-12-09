@@ -1,6 +1,6 @@
 %define	name		ufraw
 %define	version		0.18
-%define	release		%mkrel 4
+%define	release		3
 
 %define build_cinepaint 0
 %{?_with_cinepaint: %global build_cinepaint 1}
@@ -17,7 +17,7 @@ Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/sourceforge/ufraw/%{name}-%{version}.tar.gz
 License:	GPLv2+
-BuildRequires:	libgimp-devel >= 2.0 gtk+2-devel libjpeg-devel
+BuildRequires:	gimp-devel >= 2.0 gtk+2-devel libjpeg-devel
 BuildRequires:	libtiff-devel zlib-devel lcms-devel imagemagick
 BuildRequires:	libexiv-devel bzip2-devel cfitsio-devel
 BuildRequires:	libgomp-devel lensfun-devel
@@ -27,7 +27,6 @@ BuildRequires: cinepaint-devel
 %if %mdkver >= 200800
 BuildRequires: gtkimageview-devel
 %endif
-Buildroot:	%_tmppath/%name-%version-%release-root
 
 %description
 UFRaw is a utility to read and manipulate raw images from digital cameras.
@@ -75,6 +74,8 @@ cameras supported by dcraw are also supported by this plug-in.
 %setup -q
 
 %build
+export CFLAGS="$CFLAGS -I/usr/include/lensfun"
+export CXXFLAGS="$CXXFLAGS -I/usr/include/lensfun"
 %configure2_5x --enable-mime
 %make
 
@@ -132,3 +133,206 @@ rm -fr %buildroot
 %defattr(-,root,root)
 %{cinepaint_dir}/plug-ins/*
 %endif
+
+
+%changelog
+* Fri May 06 2011 Oden Eriksson <oeriksson@mandriva.com> 0.18-2mdv2011.0
++ Revision: 670739
+- mass rebuild
+
+* Tue Feb 22 2011 Götz Waschk <waschk@mandriva.org> 0.18-1
++ Revision: 639280
+- update to new version 0.18
+
+* Wed Dec 01 2010 Funda Wang <fwang@mandriva.org> 0.17-4mdv2011.0
++ Revision: 604409
+- rebuild for new exiv2
+
+* Sat Aug 21 2010 Funda Wang <fwang@mandriva.org> 0.17-3mdv2011.0
++ Revision: 571620
+- rebuild for new cfitsio
+
+* Tue Aug 03 2010 Funda Wang <fwang@mandriva.org> 0.17-2mdv2011.0
++ Revision: 565566
+- rebuild for new exiv2
+
+* Fri Apr 02 2010 Frederic Crozat <fcrozat@mandriva.com> 0.17-1mdv2010.1
++ Revision: 530776
+- Release 0.17
+- Remove patch1 (merged upstream)
+
+* Sun Jan 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0.16-3mdv2010.1
++ Revision: 488806
+- rebuilt against libjpeg v8
+
+* Wed Dec 30 2009 Frederik Himpe <fhimpe@mandriva.org> 0.16-2mdv2010.1
++ Revision: 484192
+- Rebuild for new libexiv2
+
+* Fri Oct 16 2009 Frederic Crozat <fcrozat@mandriva.com> 0.16-1mdv2010.0
++ Revision: 457831
+- Release 0.16
+- Remove patch2 (merged upstream)
+- Update patch1 (partially merged)
+
+* Sun Aug 16 2009 Oden Eriksson <oeriksson@mandriva.com> 0.15-2mdv2010.0
++ Revision: 416859
+- P2: fix build with gcc-4.4 (fedora)
+- rebuilt against libjpeg v7
+
+* Wed Dec 24 2008 Frederic Crozat <fcrozat@mandriva.com> 0.15-1mdv2009.1
++ Revision: 318385
+- Release 0.15
+- Build with OpenMP (multi-core) support
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - lowercase ImageMagick
+
+* Sun Oct 19 2008 Frederic Crozat <fcrozat@mandriva.com> 0.14.1-1mdv2009.1
++ Revision: 295409
+- Release 0.14.1
+
+* Thu Oct 16 2008 Funda Wang <fwang@mandriva.org> 0.14-1mdv2009.1
++ Revision: 294230
+- BR cfitsio
+- New version 0.14
+- there is no use shipping two .desktop files
+
+* Mon Sep 08 2008 Funda Wang <fwang@mandriva.org> 0.13-5mdv2009.0
++ Revision: 282456
+- rebuild
+
+* Wed Jun 18 2008 Thierry Vignaud <tv@mandriva.org> 0.13-4mdv2009.0
++ Revision: 225896
+- rebuild
+- fix spacing at top of description
+- fix description
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Sat Dec 29 2007 Frederic Crozat <fcrozat@mandriva.com> 0.13-3mdv2008.1
++ Revision: 139175
+- Patch0 (CVS): various CVS fixes :fix integer overflow in Canon exposure, additional WB settings, fix incandescent 400D WB, fix window resizing
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - auto-convert XDG menu entry
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Mon Nov 26 2007 Nicolas Lécureuil <nlecureuil@mandriva.com> 0.13-2mdv2008.1
++ Revision: 112022
+- Rebuild for new exiv2
+
+* Tue Nov 13 2007 Frederic Crozat <fcrozat@mandriva.com> 0.13-1mdv2008.1
++ Revision: 108434
+- Release 0.13
+
+* Mon Sep 24 2007 Frederic Crozat <fcrozat@mandriva.com> 0.12.1-2mdv2008.0
++ Revision: 92579
+- Fix build (icon extension)
+
+* Thu Aug 16 2007 Funda Wang <fwang@mandriva.org> 0.12.1-1mdv2008.0
++ Revision: 64262
+- liblcms has renamed to lcms
+
+  + Frederic Crozat <fcrozat@mandriva.com>
+    - Release 0.12.1
+
+* Wed Aug 01 2007 Frederic Crozat <fcrozat@mandriva.com> 0.12-2mdv2008.0
++ Revision: 57557
+- Fix cinepaint plugin path
+- build with gtkimageview support for 2008.0 and later
+
+* Tue Jul 31 2007 Frederic Crozat <fcrozat@mandriva.com> 0.12-1mdv2008.0
++ Revision: 56889
+- Release 0.12
+- add conditional build for cinepaint plugin (disabled)
+- clean buildrequires
+
+* Fri Apr 20 2007 Angelo Naselli <anaselli@mandriva.org> 0.11-2mdv2008.0
++ Revision: 16411
+- rebuilt against exiv2 0.14
+
+
+* Wed Mar 07 2007 Frederic Crozat <fcrozat@mandriva.com> 0.11-1mdv2007.0
++ Revision: 134331
+- Release 0.11
+
+* Sun Mar 04 2007 Angelo Naselli <anaselli@mandriva.org> 0.10-5mdv2007.1
++ Revision: 132337
+- rebuilt for new libexiv2
+
+* Fri Mar 02 2007 Frederic Crozat <fcrozat@mandriva.com> 0.10-4mdv2007.1
++ Revision: 131484
+- Don't package mimetype file, it is merged in shared-mime-info now
+
+* Thu Mar 01 2007 Frederic Crozat <fcrozat@mandriva.com> 0.10-3mdv2007.1
++ Revision: 130674
+-Clean specfile
+-enable mimetype and gconf schema building
+-fix Buildrequires
+-install thumbnailer for gnome
+-fix .desktop
+-fix icon generation
+
+* Tue Dec 05 2006 Pascal Terjan <pterjan@mandriva.org> 0.10-2mdv2007.1
++ Revision: 90781
+- Enable debug
+- always create XDG menu
+- fix categories
+
+* Mon Nov 27 2006 Pascal Terjan <pterjan@mandriva.org> 0.10-1mdv2007.1
++ Revision: 87349
+- 0.10
+- Import ufraw
+
+* Wed Aug 09 2006 Till Kamppeter <till@mandriva.com> 0.9-1mdv2007.0
+- Updated to version 0.9 final.
+- Added XDG menu stuff.
+
+* Wed May 10 2006 Lenny Cartier <lenny@mandriva.com> 0.8-1mdk
+- Updated to version 0.8 final.
+
+* Tue Mar 07 2006 Till Kamppeter <till@mandriva.com> 0.7-1mdk
+- Updated to version 0.7 final.
+
+* Fri Feb 03 2006 Till Kamppeter <till@mandriva.com> 0.7-0.1mdk
+- Updated to the state of the CVS of 03/02/2006 (based on dcraw 8.03).
+- Introduced %%mkrel.
+
+* Wed Nov 16 2005 Till Kamppeter <till@mandriva.com> 0.6-1mdk
+- Updated to version 0.6 final.
+
+* Tue Oct 04 2005 Till Kamppeter <till@mandriva.com> 0.6-0.1mdk
+- Updated to the state of the CVS of 03/10/2005 (0.6 generation of
+  UFRaw).
+
+* Fri Sep 16 2005 Till Kamppeter <till@mandriva.com> 0.5-0.4mdk
+- Do the update really.
+- Added man page.
+
+* Thu Sep 15 2005 Till Kamppeter <till@mandriva.com> 0.5-0.3mdk
+- Updated to the state of the CVS of 14/09/2005 (Fix for Sigma SD9 and
+  SD10 DSLRs, bug 18552).
+
+* Mon Aug 15 2005 Till Kamppeter <till@mandriva.com> 0.5-0.2mdk
+- Updated to the state of the CVS of 14/08/2005 (underlying dcraw updated
+  to 7.49, now new cameras like Minolta Alpha/Dynax/Maxxum 5D supported).
+
+* Thu Aug 04 2005 Till Kamppeter <till@mandriva.com> 0.5-0.1mdk
+- Updated to the state of the CVS of 03/08/2005 (dcraw 7.x intergrated).
+
+* Mon Mar 07 2005 Till Kamppeter <till@mandrakesoft.com> 0.4-2mdk
+- Added standalone version.
+
+* Mon Mar 07 2005 Till Kamppeter <till@mandrakesoft.com> 0.4-1mdk
+- Updated to version 0.4.
+- New URL.
+- Added "Requires: gimp".
+
+* Mon Nov 08 2004 Till Kamppeter <till@mandrakesoft.com> 0.2-1mdk
+- First release for Mandrakelinux
+

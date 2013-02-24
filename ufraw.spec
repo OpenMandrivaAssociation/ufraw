@@ -1,7 +1,3 @@
-%define	name		ufraw
-%define	version		0.18
-%define	release		3
-
 %define build_cinepaint 0
 %{?_with_cinepaint: %global build_cinepaint 1}
 
@@ -9,23 +5,31 @@
 %define cinepaint_dir %(pkg-config --variable=programplugindir cinepaint-gtk)
 %endif
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		ufraw
+Version:	0.18
+Release:	4
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/sourceforge/ufraw/%{name}-%{version}.tar.gz
 License:	GPLv2+
-BuildRequires:	gimp-devel >= 2.0 gtk+2-devel libjpeg-devel
-BuildRequires:	libtiff-devel zlib-devel lcms-devel imagemagick
-BuildRequires:	libexiv-devel bzip2-devel cfitsio-devel
-BuildRequires:	libgomp-devel lensfun-devel
+BuildRequires:	gimp-devel >= 2.0
+BuildRequires:	gtk+2-devel
+BuildRequires:	jpeg-devel
+BuildRequires:	libtiff-devel
+BuildRequires:	zlib-devel
+BuildRequires:	lcms-devel
+BuildRequires:	imagemagick
+BuildRequires:	libexiv-devel
+BuildRequires:	bzip2-devel
+BuildRequires:	cfitsio-devel
+BuildRequires:	libgomp-devel
+BuildRequires:	lensfun-devel
 %if %build_cinepaint
-BuildRequires: cinepaint-devel
+BuildRequires:	cinepaint-devel
 %endif
 %if %mdkver >= 200800
-BuildRequires: gtkimageview-devel
+BuildRequires:	gtkimageview-devel
 %endif
 
 %description
@@ -44,9 +48,9 @@ cameras are very different. It also contains info about the camera
 settings.
 
 %package gimp
-Summary: 	Reads the raw image formats of digital cameras into GIMP
-Group: 		Graphics
-Requires: 	gimp
+Summary:	Reads the raw image formats of digital cameras into GIMP
+Group:		Graphics
+Requires:	gimp
 Conflicts:	dcraw-gimp2.0 rawphoto
  
 %description gimp
@@ -60,9 +64,9 @@ also due to more options.
 
 %if %build_cinepaint
 %package cinepaint
-Summary: 	Reads the raw image formats of digital cameras into Cinepaint
-Group: 		Graphics
-Requires: 	cinepaint
+Summary:	Reads the raw image formats of digital cameras into Cinepaint
+Group:		Graphics
+Requires:	cinepaint
  
 %description cinepaint
 A Cinepaint plug-in which reads and processes raw images from most digital
@@ -80,7 +84,6 @@ export CXXFLAGS="$CXXFLAGS -I/usr/include/lensfun"
 %make
 
 %install
-rm -fr %buildroot
 %makeinstall_std schemasdir=%{_sysconfdir}/gconf/schemas
 %find_lang ufraw
 
@@ -89,9 +92,6 @@ install -d %buildroot%{_datadir}/icons/{large,mini}
 convert icons/ufraw.png -resize 32x32 %buildroot%{_iconsdir}/%{name}.png
 convert icons/ufraw.png -resize 16x16 %buildroot%{_miconsdir}/%{name}.png
 cp icons/ufraw.png %buildroot%{_liconsdir}/%{name}.png
-
-%clean
-rm -fr %buildroot
 
 %define schemas ufraw
 
@@ -113,7 +113,6 @@ rm -fr %buildroot
 %endif
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc README
 %_sysconfdir/gconf/schemas/ufraw.schemas
 %_bindir/*
@@ -125,12 +124,10 @@ rm -fr %buildroot
 %_mandir/man1/*
 
 %files gimp
-%defattr(-,root,root)
 %{_libdir}/gimp/2.0/plug-ins/*
 
 %if %build_cinepaint
 %files cinepaint
-%defattr(-,root,root)
 %{cinepaint_dir}/plug-ins/*
 %endif
 

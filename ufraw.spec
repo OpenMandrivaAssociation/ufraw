@@ -1,13 +1,12 @@
-%define build_cinepaint 0
-%{?_with_cinepaint: %global build_cinepaint 1}
+%bcond_with	cinepaint
 
-%if build_cinepaint
+%if %{with cinepaint}
 %define cinepaint_dir %(pkg-config --variable=programplugindir cinepaint-gtk)
 %endif
 
 Name:		ufraw
 Version:	0.18
-Release:	4
+Release:	5
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
@@ -25,11 +24,8 @@ BuildRequires:	bzip2-devel
 BuildRequires:	cfitsio-devel
 BuildRequires:	libgomp-devel
 BuildRequires:	lensfun-devel
-%if %build_cinepaint
+%if %{with cinepaint}
 BuildRequires:	cinepaint-devel
-%endif
-%if %mdkver >= 200800
-BuildRequires:	gtkimageview-devel
 %endif
 
 %description
@@ -47,13 +43,13 @@ they are exactly what the CCD has captured, and the CCDs on differnt
 cameras are very different. It also contains info about the camera
 settings.
 
-%package gimp
+%package	gimp
 Summary:	Reads the raw image formats of digital cameras into GIMP
 Group:		Graphics
 Requires:	gimp
 Conflicts:	dcraw-gimp2.0 rawphoto
  
-%description gimp
+%description	gimp
 A GIMP plug-in which reads and processes raw images from most digital
 cameras. The conversion is done by the dcraw software and so all
 cameras supported by dcraw are also supported by this plug-in.
@@ -62,13 +58,13 @@ In contrary to the original GIMP plug-in of dcraw this one is much
 more comfortable, especially because of the life preview image but
 also due to more options.
 
-%if %build_cinepaint
-%package cinepaint
+%if %{with cinepaint}
+%package	cinepaint
 Summary:	Reads the raw image formats of digital cameras into Cinepaint
 Group:		Graphics
 Requires:	cinepaint
  
-%description cinepaint
+%description	cinepaint
 A Cinepaint plug-in which reads and processes raw images from most digital
 cameras. The conversion is done by the dcraw software and so all
 cameras supported by dcraw are also supported by this plug-in.
@@ -87,46 +83,29 @@ export CXXFLAGS="$CXXFLAGS -I/usr/include/lensfun"
 %makeinstall_std schemasdir=%{_sysconfdir}/gconf/schemas
 %find_lang ufraw
 
-install -d %buildroot%{_datadir}/icons/{large,mini}
+install -d %{buildroot}%{_datadir}/icons/{large,mini}
 
-convert icons/ufraw.png -resize 32x32 %buildroot%{_iconsdir}/%{name}.png
-convert icons/ufraw.png -resize 16x16 %buildroot%{_miconsdir}/%{name}.png
-cp icons/ufraw.png %buildroot%{_liconsdir}/%{name}.png
+convert icons/ufraw.png -resize 32x32 %{buildroot}%{_iconsdir}/%{name}.png
+convert icons/ufraw.png -resize 16x16 %{buildroot}%{_miconsdir}/%{name}.png
+cp icons/ufraw.png %{buildroot}%{_liconsdir}/%{name}.png
 
 %define schemas ufraw
 
-# Update menus
-%if %mdkversion < 200900
-%post
-%post_install_gconf_schemas %schemas
-%update_desktop_database
-%update_menus
-%endif
-
-%preun
-%preun_uninstall_gconf_schemas %schemas
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%clean_desktop_database
-%endif
-
 %files -f %{name}.lang
 %doc README
-%_sysconfdir/gconf/schemas/ufraw.schemas
-%_bindir/*
-%_datadir/applications/ufraw.desktop
-%_datadir/pixmaps/*.png
-%_iconsdir/*.png
-%_liconsdir/*.png
-%_miconsdir/*.png
-%_mandir/man1/*
+%{_sysconfdir}/gconf/schemas/ufraw.schemas
+%{_bindir}/*
+%{_datadir}/applications/ufraw.desktop
+%{_datadir}/pixmaps/*.png
+%{_iconsdir}/*.png
+%{_liconsdir}/*.png
+%{_miconsdir}/*.png
+%{_mandir}/man1/*
 
 %files gimp
 %{_libdir}/gimp/2.0/plug-ins/*
 
-%if %build_cinepaint
+%if %{with cinepaint}
 %files cinepaint
 %{cinepaint_dir}/plug-ins/*
 %endif

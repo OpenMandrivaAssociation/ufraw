@@ -75,8 +75,7 @@ cameras supported by dcraw are also supported by this plug-in.
 %setup -q
 
 %build
-export CFLAGS="$CFLAGS -I/usr/include/lensfun"
-export CXXFLAGS="$CXXFLAGS -I/usr/include/lensfun"
+export CPPFLAGS="-I/usr/include/lensfun"
 %configure2_5x --enable-mime
 %make
 

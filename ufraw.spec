@@ -5,25 +5,27 @@
 %endif
 
 Name:		ufraw
-Version:	0.18
-Release:	5
+Version:	0.19.2
+Release:	1
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/sourceforge/ufraw/%{name}-%{version}.tar.gz
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0
-BuildRequires:	gtk+2-devel
+BuildRequires:	pkgconfig(gtk+-x11-2.0)
 BuildRequires:	jpeg-devel
-BuildRequires:	libtiff-devel
-BuildRequires:	zlib-devel
-BuildRequires:	lcms-devel
-BuildRequires:	imagemagick
-BuildRequires:	libexiv-devel
+BuildRequires:	pkgconfig(libtiff-4)
+BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(lcms)
+BuildRequires:	pkgconfig(ImageMagick)
+BuildRequires:	pkgconfig(exiv2)
 BuildRequires:	bzip2-devel
-BuildRequires:	cfitsio-devel
-BuildRequires:	libgomp-devel
-BuildRequires:	lensfun-devel
+BuildRequires:	pkgconfig(cfitsio)
+BuildRequires:	gomp-devel
+BuildRequires:	pkgconfig(lensfun)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(jasper)
 %if %{with cinepaint}
 BuildRequires:	cinepaint-devel
 %endif

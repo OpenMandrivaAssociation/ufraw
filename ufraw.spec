@@ -98,6 +98,7 @@ cp icons/ufraw.png %{buildroot}%{_liconsdir}/%{name}.png
 %{_sysconfdir}/gconf/schemas/ufraw.schemas
 %{_bindir}/*
 %{_datadir}/applications/ufraw.desktop
+%{_datadir}/appdata/ufraw.appdata.xml
 %{_datadir}/pixmaps/*.png
 %{_iconsdir}/*.png
 %{_liconsdir}/*.png

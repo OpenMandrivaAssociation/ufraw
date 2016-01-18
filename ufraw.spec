@@ -6,7 +6,7 @@
 
 Name:		ufraw
 Version:	0.20
-Release:	5
+Release:	6
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/

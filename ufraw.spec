@@ -11,6 +11,7 @@ Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
 Source0:  https://sourceforge.net/projects/ufraw/files/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
+Patch0: ufraw-0.22-openmandriva-wrong-variable-dcrawcc.patch
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0
 BuildRequires:	pkgconfig(gtk+-x11-2.0)
@@ -75,6 +76,7 @@ cameras supported by dcraw are also supported by this plug-in.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 export CPPFLAGS="-I/usr/include/lensfun"

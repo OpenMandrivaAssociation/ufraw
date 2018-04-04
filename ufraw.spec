@@ -11,6 +11,7 @@ Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
 Source0:  https://sourceforge.net/projects/ufraw/files/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
+# Patch create at upstream issue https://sourceforge.net/p/ufraw/bugs/419/
 Patch0: ufraw-0.22-openmandriva-wrong-variable-dcrawcc.patch
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0

@@ -36,6 +36,7 @@ BuildRequires:	pkgconfig(jasper)
 BuildRequires:	cinepaint-devel
 %endif
 BuildRequires:	pkgconfig(gtkimageview)
+BuildRequires: pkgconfig(libssh)	
 
 %description
 UFRaw is a utility to read and manipulate raw images from digital cameras.

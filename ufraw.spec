@@ -16,6 +16,7 @@ Patch0: ufraw-0.22-openmandriva-wrong-variable-dcrawcc.patch
 Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
 #Import mga patch to fix ARMv7 and aarch64 build.
 Patch2: 05_fix_build_due_to_unsigned_char.patch
+Patch3: ufraw-0.22-exiv2-0.27.patch
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0
 BuildRequires:	pkgconfig(gtk+-x11-2.0)
@@ -83,6 +84,7 @@ cameras supported by dcraw are also supported by this plug-in.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1
+%patch3 -p1
 
 %build
 export CPPFLAGS="-I/usr/include/lensfun"

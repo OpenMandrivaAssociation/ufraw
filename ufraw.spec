@@ -6,7 +6,7 @@
 
 Name:		ufraw
 Version:	0.22
-Release:	4
+Release:	5
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
@@ -90,10 +90,10 @@ cameras supported by dcraw are also supported by this plug-in.
 %build
 export CPPFLAGS="-I/usr/include/lensfun"
 %configure --enable-mime
-%make
+%make_build
 
 %install
-%makeinstall_std schemasdir=%{_sysconfdir}/gconf/schemas
+%make_install schemasdir=%{_sysconfdir}/gconf/schemas
 %find_lang ufraw
 
 install -d %{buildroot}%{_datadir}/icons/{large,mini}

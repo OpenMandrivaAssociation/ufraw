@@ -6,7 +6,7 @@
 
 Name:		ufraw
 Version:	0.22
-Release:	6
+Release:	7
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
@@ -17,6 +17,7 @@ Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
 #Import mga patch to fix ARMv7 and aarch64 build.
 Patch2: 05_fix_build_due_to_unsigned_char.patch
 Patch3: ufraw-0.22-exiv2-0.27.patch
+Patch4: https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..c65b4237dcb430fb274e4778afaf5df9a18e04e6.diff
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0
 BuildRequires:	pkgconfig(gtk+-x11-2.0)
@@ -86,6 +87,7 @@ cameras supported by dcraw are also supported by this plug-in.
 %patch1 -p0
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 export CPPFLAGS="-I/usr/include/lensfun"

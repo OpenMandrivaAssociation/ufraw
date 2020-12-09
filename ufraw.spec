@@ -6,11 +6,13 @@
 
 Name:		ufraw
 Version:	0.22
-Release:	7
+Release:	8
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
 Source0:  https://sourceforge.net/projects/ufraw/files/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1: https://raw.githubusercontent.com/sergiomb2/ufraw/02bc2df0c6c2d9d1892bd16a58e319d81e79559d/beautify_style.sh
+
 # Patch create at upstream issue https://sourceforge.net/p/ufraw/bugs/419/
 Patch0: ufraw-0.22-openmandriva-wrong-variable-dcrawcc.patch
 Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
@@ -83,6 +85,7 @@ cameras supported by dcraw are also supported by this plug-in.
 
 %prep
 %setup -q
+cp %{SOURCE1} .
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1

@@ -18,7 +18,7 @@ Patch0: ufraw-0.22-openmandriva-wrong-variable-dcrawcc.patch
 Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
 #Import mga patch to fix ARMv7 and aarch64 build.
 Patch2: 05_fix_build_due_to_unsigned_char.patch
-Patch3: ufraw-0.22-exiv2-0.27.patch
+#Patch3: ufraw-0.22-exiv2-0.27.patch
 Patch4:  https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..b2523a289538ab1439d63b224265aa5988334dc3.diff
 
 License:	GPLv2+
@@ -90,7 +90,7 @@ cp %{SOURCE1} .
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1
-%patch3 -p1
+#patch3 -p1
 %patch4 -p1
 
 %build

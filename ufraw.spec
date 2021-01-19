@@ -15,7 +15,7 @@ Source1: https://raw.githubusercontent.com/sergiomb2/ufraw/02bc2df0c6c2d9d1892bd
 
 # Patch create at upstream issue https://sourceforge.net/p/ufraw/bugs/419/
 #Patch0: ufraw-0.22-openmandriva-wrong-variable-dcrawcc.patch
-#Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
+Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
 #Import mga patch to fix ARMv7 and aarch64 build.
 #Patch2: 05_fix_build_due_to_unsigned_char.patch
 #Patch3: ufraw-0.22-exiv2-0.27.patch
@@ -88,7 +88,7 @@ cameras supported by dcraw are also supported by this plug-in.
 %setup -q
 cp %{SOURCE1} .
 #patch0 -p0
-#patch1 -p0
+%patch1 -p0
 #patch2 -p1
 #patch3 -p1
 %patch4 -p1

@@ -6,18 +6,21 @@
 
 Name:		ufraw
 Version:	0.22
-Release:	7
+Release:	9
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
 Source0:  https://sourceforge.net/projects/ufraw/files/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1: https://raw.githubusercontent.com/sergiomb2/ufraw/02bc2df0c6c2d9d1892bd16a58e319d81e79559d/beautify_style.sh
+
 # Patch create at upstream issue https://sourceforge.net/p/ufraw/bugs/419/
-Patch0: ufraw-0.22-openmandriva-wrong-variable-dcrawcc.patch
+#Patch0: ufraw-0.22-openmandriva-wrong-variable-dcrawcc.patch
 Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
 #Import mga patch to fix ARMv7 and aarch64 build.
-Patch2: 05_fix_build_due_to_unsigned_char.patch
-Patch3: ufraw-0.22-exiv2-0.27.patch
-Patch4: https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..c65b4237dcb430fb274e4778afaf5df9a18e04e6.diff
+#Patch2: 05_fix_build_due_to_unsigned_char.patch
+#Patch3: ufraw-0.22-exiv2-0.27.patch
+Patch4:  https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..b2523a289538ab1439d63b224265aa5988334dc3.diff
+
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0
 BuildRequires:	pkgconfig(gtk+-x11-2.0)
@@ -83,10 +86,11 @@ cameras supported by dcraw are also supported by this plug-in.
 
 %prep
 %setup -q
-%patch0 -p0
+cp %{SOURCE1} .
+#patch0 -p0
 %patch1 -p0
-%patch2 -p1
-%patch3 -p1
+#patch2 -p1
+#patch3 -p1
 %patch4 -p1
 
 %build

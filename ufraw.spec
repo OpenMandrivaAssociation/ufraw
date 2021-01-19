@@ -19,7 +19,8 @@ Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
 #Import mga patch to fix ARMv7 and aarch64 build.
 Patch2: 05_fix_build_due_to_unsigned_char.patch
 Patch3: ufraw-0.22-exiv2-0.27.patch
-Patch4: https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..c65b4237dcb430fb274e4778afaf5df9a18e04e6.diff
+Patch4:  https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..b2523a289538ab1439d63b224265aa5988334dc3.diff
+
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0
 BuildRequires:	pkgconfig(gtk+-x11-2.0)

@@ -20,6 +20,7 @@ Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
 #Patch2: 05_fix_build_due_to_unsigned_char.patch
 #Patch3: ufraw-0.22-exiv2-0.27.patch
 Patch4:  https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..b2523a289538ab1439d63b224265aa5988334dc3.diff
+Patch5:  ufraw-fix-c++.patch
 
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0
@@ -92,6 +93,7 @@ cp %{SOURCE1} .
 #patch2 -p1
 #patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 export CPPFLAGS="-I/usr/include/lensfun"

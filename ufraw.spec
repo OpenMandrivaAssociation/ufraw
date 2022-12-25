@@ -1,3 +1,4 @@
+%define _empty_manifest_terminate_build 0
 %bcond_with	cinepaint
 
 %if %{with cinepaint}

@@ -1,5 +1,5 @@
-%define _empty_manifest_terminate_build 0
 %bcond_with	cinepaint
+%undefine _debugsource_packages
 
 %if %{with cinepaint}
 %define cinepaint_dir %(pkg-config --variable=programplugindir cinepaint-gtk)
@@ -7,7 +7,7 @@
 
 Name:		ufraw
 Version:	0.22
-Release:	11
+Release:	12
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
@@ -16,12 +16,10 @@ Source1: https://raw.githubusercontent.com/sergiomb2/ufraw/02bc2df0c6c2d9d1892bd
 
 # Patch create at upstream issue https://sourceforge.net/p/ufraw/bugs/419/
 #Patch0: ufraw-0.22-openmandriva-wrong-variable-dcrawcc.patch
-Patch1: ufraw-quick-fix-for-invalid-sufflix.patch
 #Import mga patch to fix ARMv7 and aarch64 build.
 #Patch2: 05_fix_build_due_to_unsigned_char.patch
 #Patch3: ufraw-0.22-exiv2-0.27.patch
-Patch4:  https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..b2523a289538ab1439d63b224265aa5988334dc3.diff
-Patch5:  ufraw-fix-c++.patch
+Patch4:  https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..684af0548ed76fd97635687fa90a754a7a04a017.diff
 
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0
@@ -87,14 +85,11 @@ cameras supported by dcraw are also supported by this plug-in.
 %endif
 
 %prep
+# Not using autosetup because patches touch SOURCE1
 %setup -q
 cp %{SOURCE1} .
-#patch0 -p0
-%patch1 -p0
-#patch2 -p1
-#patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autopatch -p1
+./autogen.sh
 
 %build
 export CPPFLAGS="-I/usr/include/lensfun"

@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(lcms2)
 BuildRequires:	imagemagick
 BuildRequires:	pkgconfig(exiv2)
 BuildRequires:	bzip2-devel
+BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(cfitsio)
 BuildRequires:	gomp-devel
 BuildRequires:	pkgconfig(lensfun)

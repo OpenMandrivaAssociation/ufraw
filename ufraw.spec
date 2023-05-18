@@ -7,7 +7,7 @@
 
 Name:		ufraw
 Version:	0.22
-Release:	13
+Release:	14
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
 URL:		http://ufraw.sourceforge.net/
@@ -20,6 +20,7 @@ Source1: https://raw.githubusercontent.com/sergiomb2/ufraw/02bc2df0c6c2d9d1892bd
 #Patch2: 05_fix_build_due_to_unsigned_char.patch
 #Patch3: ufraw-0.22-exiv2-0.27.patch
 Patch4:  https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..684af0548ed76fd97635687fa90a754a7a04a017.diff
+Patch10:	ufraw-0.22-exiv2-0.28.patch
 
 License:	GPLv2+
 BuildRequires:	gimp-devel >= 2.0

@@ -10,7 +10,7 @@ Version:	0.22
 Release:	14
 Summary:	Graphical tool to convert raw images of digital cameras
 Group:		Graphics
-URL:		http://ufraw.sourceforge.net/
+URL:		https://ufraw.sourceforge.net/
 Source0:  https://sourceforge.net/projects/ufraw/files/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1: https://raw.githubusercontent.com/sergiomb2/ufraw/02bc2df0c6c2d9d1892bd16a58e319d81e79559d/beautify_style.sh
 

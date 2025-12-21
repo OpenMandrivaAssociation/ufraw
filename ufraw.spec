@@ -23,6 +23,11 @@ Patch4:  https://github.com/sergiomb2/ufraw/compare/ufraw-0-22..684af0548ed76fd9
 Patch10:	ufraw-0.22-exiv2-0.28.patch
 
 License:	GPLv2+
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gimp-devel >= 2.0
 BuildRequires:	pkgconfig(gtk+-x11-2.0)
 BuildRequires:	jpeg-devel

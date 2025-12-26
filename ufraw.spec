@@ -28,7 +28,7 @@ BuildRequires:	automake
 BuildRequires:	libtool-base
 BuildRequires:	slibtool
 BuildRequires:	make
-BuildRequires:	gimp-devel >= 2.0
+#BuildRequires:	gimp-devel >= 2.0
 BuildRequires:	pkgconfig(gtk+-x11-2.0)
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libtiff-4)

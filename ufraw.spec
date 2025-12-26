@@ -26,6 +26,7 @@ License:	GPLv2+
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool-base
+BuildRequires: locales-extra-charsets
 BuildRequires:	slibtool
 BuildRequires:	make
 #BuildRequires:	gimp-devel >= 2.0

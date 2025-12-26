@@ -65,20 +65,20 @@ they are exactly what the CCD has captured, and the CCDs on differnt
 cameras are very different. It also contains info about the camera
 settings.
 
-%package	gimp
-Summary:	Reads the raw image formats of digital cameras into GIMP
-Group:		Graphics
-Requires:	gimp
-Conflicts:	dcraw-gimp2.0 rawphoto
+#package	gimp
+#Summary:	Reads the raw image formats of digital cameras into GIMP
+#Group:		Graphics
+#Requires:	gimp
+#Conflicts:	dcraw-gimp2.0 rawphoto
  
-%description	gimp
-A GIMP plug-in which reads and processes raw images from most digital
-cameras. The conversion is done by the dcraw software and so all
-cameras supported by dcraw are also supported by this plug-in.
+#description	gimp
+#A GIMP plug-in which reads and processes raw images from most digital
+#cameras. The conversion is done by the dcraw software and so all
+#cameras supported by dcraw are also supported by this plug-in.
 
-In contrary to the original GIMP plug-in of dcraw this one is much
-more comfortable, especially because of the life preview image but
-also due to more options.
+#In contrary to the original GIMP plug-in of dcraw this one is much
+#more comfortable, especially because of the life preview image but
+#also due to more options.
 
 %if %{with cinepaint}
 %package	cinepaint
@@ -128,8 +128,8 @@ cp icons/ufraw.png %{buildroot}%{_liconsdir}/%{name}.png
 %{_miconsdir}/*.png
 %{_mandir}/man1/*
 
-%files gimp
-%{_libdir}/gimp/2.0/plug-ins/*
+#files gimp
+#{_libdir}/gimp/2.0/plug-ins/*
 
 %if %{with cinepaint}
 %files cinepaint
